@@ -2,7 +2,12 @@ import algoliasearch from 'algoliasearch';
 import instantsearch from 'instantsearch.js';
 
 // Instant Search Widgets
-import { hits, searchBox, configure } from 'instantsearch.js/es/widgets';
+import { hits,
+  searchBox,
+  configure,
+  pagination,
+  refinementList,
+  rangeSlider } from 'instantsearch.js/es/widgets';
 
 // Autocomplete Template
 import autocompleteProductTemplate from '../templates/autocomplete-product';
@@ -28,12 +33,12 @@ class Autocomplete {
    */
   _registerClient() {
     this._searchClient = algoliasearch(
-      'VYLEWMPKEZ',
-      '8940a18fde155adf3f74b0912c267aa4'
+      'G3IY9X55TN',
+      '502e42eac394450040c1048d8bd6e2b4'
     );
 
     this._searchInstance = instantsearch({
-      indexName: 'ecommerce-v2',
+      indexName: 'SPENCER_WILLIAM',
       searchClient: this._searchClient,
     });
   }
@@ -46,7 +51,7 @@ class Autocomplete {
   _registerWidgets() {
     this._searchInstance.addWidgets([
       configure({
-        hitsPerPage: 3,
+        hitsPerPage: 5,
       }),
       searchBox({
         container: '#searchbox',
@@ -55,8 +60,37 @@ class Autocomplete {
         container: '#autocomplete-hits',
         templates: { item: autocompleteProductTemplate },
       }),
+      pagination({
+        container: '#pagination',
+      }),
+      refinementList({
+        container: "#categories",
+        attribute: "categories",
+        autoHideContainer: false,
+        templates: {
+          header: "Categories"
+        },
+      }),
+      refinementList({
+        container: "#brands",
+        attribute: "brand",
+        searchForFacetValues: true,
+        autoHideContainer: false,
+        templates: {
+          header: "Brands"
+        },
+      }),
+      rangeSlider({
+        container: "#price",
+        autoHideContainer: false,
+        attribute: "price",
+        templates: {
+          header: "Price"
+        },
+      }),
     ]);
   }
+  // do brand, category, price
 
   /**
    * @private

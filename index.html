@@ -25,8 +25,7 @@
         <div class="header__searchbox" id="searchbox"></div>
         <div class="autocomplete">
           <div class="autocomplete_container">
-            <div class="autocomplete__hits" id="autocomplete-hits">
-            </div>
+
           </div>
         </div>
       </div>
@@ -34,7 +33,18 @@
   </header>
 
   <div class="results">
+    <div id="sidebar">
+      Categories
+      <div id="categories"></div>
+      Brands
+      <div id="brands"></div>
+      Price $
+      <div id="price"></div>
+    </div>
+    <div class="autocomplete__hits" id="autocomplete-hits">
+    </div>
   </div>
+  <div id="pagination"></div>
 
   <script src="./src/app.js"></script>
 </body>

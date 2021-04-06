@@ -106,10 +106,21 @@
   font-size: 12px;
 }
 
+/*Sidebar Selections*/
+#sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  min-width: 300px;
+  padding: 20px 30px;
+}
+
 /*Results*/
 .results {
+  display: flex;
+  flex-direction: row;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 0 auto 0 15px;
   padding: 120px 1rem 0;
 }
 
