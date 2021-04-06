@@ -55,6 +55,8 @@ class Autocomplete {
       }),
       searchBox({
         container: '#searchbox',
+        placeholder: 'Search for products',
+        autofocus: true,
       }),
       hits({
         container: '#autocomplete-hits',
@@ -90,7 +92,6 @@ class Autocomplete {
       }),
     ]);
   }
-  // do brand, category, price
 
   /**
    * @private
@@ -100,6 +101,8 @@ class Autocomplete {
   _startSearch() {
     this._searchInstance.start();
   }
+
+
 }
 
 export default Autocomplete;
