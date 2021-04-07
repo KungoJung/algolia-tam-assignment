@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "start": "parcel index.html --port 3000",
-    "build": "parcel build index.html",
+    "build-site": "parcel build index.html --public-url ./",
     "lint": "eslint .",
-    "lint:fix": "npm run lint -- --fix"
+    "lint:fix": "npm run lint -- --fix",
+    "push-gh-pages": "push-dir --dir=dist --branch=gh-pages --cleanup --verbose"
   },
   "devDependencies": {
     "babel-eslint": "10.0.2",
@@ -19,6 +20,7 @@
     "prettier": "1.16.4"
   },
   "dependencies": {
+    "@algolia/autocomplete-js": "^1.0.0-alpha.44",
     "algoliasearch": "^3.35.1",
     "instantsearch.js": "^4.0.0"
   }

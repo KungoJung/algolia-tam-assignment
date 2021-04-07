@@ -6,11 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="theme-color" content="#000000">
 
-  <link rel="shortcut icon" href="./favicon.png">
+  <link rel="shortcut icon" href="favicon.png">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7/themes/algolia-min.css">
-  <link rel="stylesheet" href="./src/index.css">
-  <link rel="stylesheet" href="./src/app.css">
+  <link rel="stylesheet" href="src/index.css">
+  <link rel="stylesheet" href="src/app.css">
 
   <title>algolia-sa-assignment</title>
 </head>
@@ -25,7 +25,9 @@
         <div class="header__searchbox" id="searchbox"></div>
         <div class="autocomplete">
           <div class="autocomplete_container">
-            Autocomplete container
+            <div id="autocomplete_query"></div>
+            <div class="autocomplete__hits" id="autocomplete-hits">
+            </div>
           </div>
         </div>
       </div>
@@ -46,7 +48,7 @@
   </div>
   <div id="pagination"></div>
 
-  <script src="./src/app.js"></script>
+  <script type="module" src="src/app.js"></script>
 </body>
 
 </html>
