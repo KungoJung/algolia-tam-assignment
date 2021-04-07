@@ -1,89 +1,30 @@
-# Algolia TAM Assignment
+DEMO:
+[15-second demo](https://youtu.be/mXW2KgMBKRU)
 
-This is the hiring assignment for the TAM Team at Algolia. It’s intended to mimic work you might do here, while giving us an understanding of your skills in:
+You can also fork, npm install, and npm start to see the app working on port 3000. I ran into too many bugs while deploying - see notes.
 
-* Problem Solving  
-* Coding  
-* User Experience  
-* Communication  
+Fundamentally, I get what we are trying to do, but got stuck a lot. So this implementation is far from perfect.
 
-If you want to know how we will judge the assignment, you can view our scoring rubric.  
+First I read through basics to get a feel for the total Algolia ecosystem. Then a few mis-starts. It took a while, but I found the guide for building multi-index search. That seemed like the right documentation for building the feature I wanted: federated search with autocomplete query suggestions and products. I imported the ‘index’ widget and registered it last after hits, passing the query_suggestions indexName I generated on Algolia’s dashboard. Then, the goal would be to add a custom widget/component that renders to a #autocomplete-queries div or just shares the original #searchbox div and appends children. The guides showed various implementations.
 
-Please spend no more than 4 hours on this assignment, everything you need can be found in our public documentation.  
+The hard part: Building the custom Autocomplete Component and Render callback
 
-Once done please host the front end on github pages (or an other tool we can access) and provide us a link to your demo along with the source code!  
+The code in
+https://www.algolia.com/doc/api-reference/widgets/autocomplete/js/?client=js#about-this-widget
+and
+https://codesandbox.io/s/github/algolia/doc-code-samples/tree/isjs-v4/InstantSearch.js/query-suggestions?file=/src/app.js
+And
+https://www.algolia.com/doc/guides/building-search-ui/ui-and-ux-patterns/query-suggestions/tutorials/building-query-suggestions-ui/js/
+And
+https://www.algolia.com/doc/guides/building-search-ui/ui-and-ux-patterns/multi-index-search/js/
+All have slight variations!
 
-## Brief
+Unfortunately, none of these solutions were working out of the box. One error consistent among my attempts was calling instantsearch.connectors.connectAutocomplete, when { connectAutocomplete } from 'instantsearch.js/es/connectors' is the preferred import. Then, I debugged some DOM errors in a few of the implementations -- calling .html() and .find() on the container node.
 
-### Part One - Technical Assignment (3.5 hrs)
+After getting stuck where the connectAutocomplete callback handles an array prop called ‘indices’, I finally moved the custom autocomplete widget from being called inside the index widget scope, to the main searchInstance scope, and got a working autocomplete feature. But that’s just hitting the main SPENCER_WILLIAM index.
 
-Our customer Spencer and Williams want to implement a **_federated search experience_** which includes both products and **_query suggestions_** in the autocomplete they provided. They have asked for us to create a demo of this behaviour in their provided codebase.  
-  
-Spencer and Williams have provided the raw product data and have asked for us to create the suggestions using Algolias query suggestions feature.  
-  
-### Part Two - Questions (0.5 hrs)
+So getting to the query_suggestions index… I moved it back and despite my generating it from SPENCER_WILLIAM with all 10k of its records, it only had 2 records instead of 10k ranked by popularity that I expected.
 
-Please answer example customer questions in the questions directory.  
-  
-## Getting started
+The next thing I saw in the docs was to use facet data to start generating query suggestions. I did that for brand, name, category, and description, and populated 700+ records, and finally saw the changes needed in the app.
 
-First you'll need to sign up for an Algolia account @ https://www.algolia.com/users/sign_up.  
-  
-You can find the product dataset in the data folder inside this repo. You will need to push this data to Algolia in your own application and connect the app to the dataset in both components.  
-  
-You can create a Query Suggestions index from your Algolia trial account following our documentation.  
-
-Everything you need to complete this assignment can be found on algolia.com/docs.  
-  
-## Running this repo
-  
-To run this project locally, install the dependencies and run the local server:  
-  
-```sh
-npm install
-npm start
-```
-  
-Alternatively, you may use [Yarn](https://http://yarnpkg.com/):  
-  
-```sh
-yarn
-yarn start
-```
-  
-Open http://localhost:3000 to see your app.  
-  
-## Scoring Rubric
-  
-### Technical Assignment
-  
-| Did the candidate: | Yes | No |
-| :------------- | :------------- | :------------- |
-| Follow the instructions of the assignment? | | |
-| Write code that follows best-practices? | | |
-| Avoid over-engineering? | | |
-| Demonstrate understanding of the code they wrote? | | |
-| Demonstrate good code and process organization? | | |
-| Craft a search experience that is simple to understand? | | |
-| Account for different use cases (e.g. mobile, touch) | | |
-| Complete the assignment in an efficient manner? | | |
-| Go beyond what was asked of them? | | | |
-| Ask for clarification when necessary? | | |
-| How long did the candidate spend on the assignment (in hours)? | | |
-
-### “Customer” Questions
-
-| Did the candidate: | Yes | No |
-| :------------- | :------------- | :------------- |
-| Answer the questions correctly? | | |
-| Answer in a succinct manner? | | |
-| Have minimal spelling, grammar, or formatting mistakes? | | |
-| Employ a friendly, helpful tone? | | | |
-
-### Overall Impressions
-
-| Does the candidate demonstrate being in the top 10% of: | Yes | No |
-| :------------- | :------------- | :------------- |
-| Technical aptitude | | |
-| UX | | |
-| Communication skills | | | |
+Lastly, I tried to deploy the app, but had too many issues with parcel to get the build right with correct relative paths coming from the dist folder -- in particular I was stuck with a 404 error for the location of the autocomplete.js file. Tried on Netlify and GitHub pages with neither working in a reasonable amount of time, but settled for a little video demo (link above).
