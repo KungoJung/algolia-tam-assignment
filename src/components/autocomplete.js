@@ -1,7 +1,7 @@
 import algoliasearch from 'algoliasearch';
 import instantsearch from 'instantsearch.js';
 // import { autocomplete, getAlgoliaHits } from '@algolia/autocomplete-js';
-import { connectSearchBox, connectAutocomplete } from 'instantsearch.js/es/connectors'
+import { connectAutocomplete } from 'instantsearch.js/es/connectors'
 
 // Instant Search Widgets
 import { hits, searchBox, configure, index } from 'instantsearch.js/es/widgets';
