@@ -32,7 +32,6 @@ const autocompleteQueryComponent = connectAutocomplete(
         refine(event.target.value);
       });
     }
-    console.log(indices)
     container.innerHTML = indices
       .map(renderIndexListItem)
       .join('');
@@ -90,36 +89,6 @@ class Autocomplete {
         container: '#autocomplete-hits',
         templates: { item: autocompleteProductTemplate },
       }),
-<<<<<<< HEAD
-      pagination({
-        container: '#pagination',
-      }),
-      refinementList({
-        container: "#categories",
-        attribute: "categories",
-        autoHideContainer: false,
-        templates: {
-          header: "Categories"
-        },
-      }),
-      refinementList({
-        container: "#brands",
-        attribute: "brand",
-        searchForFacetValues: true,
-        autoHideContainer: false,
-        templates: {
-          header: "Brands"
-        },
-      }),
-      rangeSlider({
-        container: "#price",
-        autoHideContainer: false,
-        attribute: "price",
-        templates: {
-          header: "Price"
-        },
-      }),
-=======
       index({ indexName: 'SPENCER_WILLIAM_query_suggestions' }).addWidgets([
         // The index inherits from the parent's `searchBox` search parameters
         configure({
@@ -129,7 +98,6 @@ class Autocomplete {
           container: '#autocomplete_query',
         }),
       ]),
->>>>>>> 5f9dee4f0290d4e307e6efde380be2f5e1704ab5
     ]);
   }
 
