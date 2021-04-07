@@ -78,7 +78,12 @@
 
 .autocomplete_container {
   display: flex;
+  flex-direction: column;
   width: 100%;
+}
+
+#autocomplete-query {
+  font-weight: bold;
 }
 
 .autocomplete-product {
