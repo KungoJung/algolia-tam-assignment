@@ -17,9 +17,9 @@ Marissa
 
 Hello Marissa,
 
-I am sorry to hear you do not like the new dashboard design, and I will relay that feedback to the appropriate people.
+I am sorry to hear you do not like the new dashboard design. I will relay your feedback to the appropriate people.
 
-In the meantime, if deleting one index at a time is too slow, you can writing a script using our API to delete as many indexes as you need. Here is an [example](https://www.algolia.com/doc/guides/sending-and-managing-data/manage-your-indices/how-to/delete-multiple-indices/?client=javascript) of how to do that.
+In the meantime, if deleting one index at a time is too slow, it is possible to write a script using our API to delete as many indexes as you need. Here is an [example](https://www.algolia.com/doc/guides/sending-and-managing-data/manage-your-indices/how-to/delete-multiple-indices/?client=javascript) of how to do that.
 
 Please let me know if that is of any help.
 
@@ -51,7 +51,7 @@ The maximum record size we are able to store is 100kb for any individual record.
 1. Simplify record structure to only include pertinent search data, i.e. data useful for searching, faceting, ranking, or display.
 2. Split the records into smaller chunks and use our distinct feature (linked [here](https://www.algolia.com/doc/api-reference/api-parameters/distinct/))
 
-For your site, the first method should do the trick, but you would have to find another method of storing your non-search-related metadata.
+For your site, the first method should do the trick, but you would have to find another method of storing your non-search-related metadata. If you like, I can make suggestions based on the metadata you want to store and how you use it.
 
 For more info, check out [this article](https://www.algolia.com/doc/faq/basics/is-there-a-size-limit-for-my-index-records/) on size limits for records, and [this one](https://www.algolia.com/doc/guides/sending-and-managing-data/prepare-your-data/) on formatting your data.
 
@@ -78,7 +78,7 @@ Can you fix it please?
 
 Hello Marc,
 
-Thanks for bringing this to my attention. It looks like an issue with the package bundler (parcel). First, is your code working as one would expect when run locally -- and you're only getting this error in production?
+Thanks for bringing this to my attention. First, is your code working as one would expect when run locally -- and you're only getting this error in production? If so, it looks like an issue with the package bundler (parcel).
 
 I would be glad to take a look as soon as I am able. Are you available at [ a time ]?
 
