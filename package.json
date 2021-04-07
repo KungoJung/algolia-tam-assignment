@@ -6,7 +6,8 @@
     "start": "parcel index.html --port 3000",
     "build-site": "parcel build index.html",
     "lint": "eslint .",
-    "lint:fix": "npm run lint -- --fix"
+    "lint:fix": "npm run lint -- --fix",
+    "push-gh-pages": "push-dir --dir=dist --branch=gh-pages --cleanup --verbose"
   },
   "devDependencies": {
     "babel-eslint": "10.0.2",
